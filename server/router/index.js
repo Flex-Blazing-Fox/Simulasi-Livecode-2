@@ -11,7 +11,7 @@ router.post('/register', (req,res) => {
             res.status(201).json(data)
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).json(err)
         })
 })
 
@@ -30,12 +30,18 @@ router.post('/login', (req,res,next) => {
             }
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).json(err)
         })
 })
 
 router.get('/inventories', (req, res, next) => {
-
+    Inventory.findAll()
+        .then(data => {
+            res.status(200).json(data)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
 })
 
 module.exports = router
