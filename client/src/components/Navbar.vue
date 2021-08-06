@@ -11,7 +11,7 @@
             <a class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Login</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Logout</a>
+          <a @click.prevent="logout" class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Logout</a>
         </li>
       </ul>
     </div>
@@ -20,7 +20,11 @@
 
 <script>
 export default {
-
+  methods: {
+    logout () {
+      localStorage.removeItem('access_token')
+    }
+  }
 }
 </script>
 
