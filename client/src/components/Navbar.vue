@@ -12,7 +12,7 @@
                 <router-link to="/login" class="nav-link text-white" tabindex="-1" aria-disabled="true">Login</router-link>
               </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Logout</a>
+              <a class="nav-link text-white" @click="logout" href="#" tabindex="-1" aria-disabled="true">Logout</a>
             </li>
           </ul>
         </div>
@@ -21,6 +21,11 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+      logout(){
+          this.$store.dispatch('logout')
+      }
+  }
 }
 </script>

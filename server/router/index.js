@@ -2,6 +2,7 @@ const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { User, Inventory } = require('../models')
+const authentication  = require('../middleware/auth')
 
 router.post('/register', (req,res) => {
     const { email, password } = req.body
@@ -34,7 +35,7 @@ router.post('/login', (req,res,next) => {
         })
 })
 
-router.get('/inventories', (req, res, next) => {
+router.get('/inventories', authentication, (req, res, next) => {
     Inventory.findAll()
         .then(data => {
             res.status(200).json(data)
