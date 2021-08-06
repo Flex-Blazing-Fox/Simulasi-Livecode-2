@@ -1,6 +1,6 @@
 <template>
   <div class="card col-4 mx-auto my-2">
-    <img src="../assets/login.jpg" class="card-img-top img-thumbnail " alt="...">
+    <!-- <img src="../../source/assets/login.jpg" class="card-img-top img-thumbnail " alt="..."> -->
     <div class="card-body d-flex flex-row">
       <form class="col-12" @submit.prevent="login">
         <div class="form-group">
@@ -22,6 +22,11 @@
 <script>
 export default {
   name: 'Login',
+  methods: {
+    login() {
+      this.$store.dispatch('login')
+    }
+  },
   computed: {
     email: {
       get () {
