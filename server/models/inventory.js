@@ -9,18 +9,44 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
-    }
+   
   };
   Inventory.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    }, 
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
   }, {
     sequelize,
     modelName: 'Inventory',
   });
+
+  Inventory.associate = function(models){
+    Inventory.belongsTo(models.User,{foreignKey:"userId"})
+  }
   return Inventory;
 };
