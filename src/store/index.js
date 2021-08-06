@@ -1,10 +1,10 @@
-import { createStore } from 'vuex'
+import { Store } from 'vuex'
 import axios from 'axios'
 import router from '../router'
 
 axios.defaults.baseURL = 'http://localhost:3000'
 
-export default createStore({
+export default Store({
   state: {
     email: '',
     password: '',
@@ -69,7 +69,7 @@ export default createStore({
         headers: localStorage.access_token
       })
         .then(inventories => {
-          commit('SET_INVENTORIES')
+          commit('SET_INVENTORIES', inventories)
         })
         .catch(err => {
           console.log(err)
